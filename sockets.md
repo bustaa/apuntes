@@ -524,9 +524,10 @@ Primero se guardan en un **buffer**, y solo se envían cuando ese buffer se vac�
 ---
 
 ### ✅ Uso de `autoFlush` (opción recomendada)
-
+```java
     PrintWriter pw = new PrintWriter(socket.getOutputStream(), true);
     pw.println("mensaje");
+```
 
 - El segundo parámetro (`true`) activa el **autoFlush**
 - Cada vez que se usa:
@@ -540,10 +541,11 @@ Primero se guardan en un **buffer**, y solo se envían cuando ese buffer se vac�
 ---
 
 ### ⚠️ Uso sin `autoFlush` (flush manual)
-
+```java
     PrintWriter pw = new PrintWriter(socket.getOutputStream());
     pw.println("mensaje");
     pw.flush();
+```
 
 - El `PrintWriter` **NO envía los datos automáticamente**
 - Es obligatorio llamar a `flush()`
@@ -552,11 +554,11 @@ Primero se guardan en un **buffer**, y solo se envían cuando ese buffer se vac�
 ---
 
 ### ❌ Error típico de examen
-
+```java
     PrintWriter pw = new PrintWriter(socket.getOutputStream());
     pw.println("mensaje");   // ❌ No se envía todavía
     // falta pw.flush();
-
+```
 Este error provoca que:
 - El otro lado se quede bloqueado en `readLine()`
 - El programa parezca colgado
